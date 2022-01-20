@@ -1,0 +1,14 @@
+name = "portfolio-worker"
+type = "javascript"
+zone_id = ""
+account_id = "7c9753249b75ec7962a44d9a7ee06599"
+route = ""
+workers_dev = true
+compatibility_date = "2022-01-19"
+kv_namespaces = [
+	{ binding = "SITE_CONFIG", preview_id = "0359d3836a1e40fdaf2e4285533b06d3", id = "abd8c5374a564221a68a0498cb7b0d05" }
+]
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "service-worker"
