@@ -37,7 +37,12 @@ export async function handleRequest(request: Request): Promise<Response> {
     const requestBody: configRequestBody | undefined = await request.json()
     if (requestBody) {
       response = await updateVersion(requestBody)
-      return generateResponse(JSON.stringify(response), 200, headers)
+      const { success } = response
+      if (success) {
+        fetch(DEPLOY_URL)
+        return generateResponse(JSON.stringify(response), 200, headers)
+      }
+      return generateResponse(JSON.stringify(response), 400, headers)
     }
     return generateResponse('Invalid Request Body', 400, headers)
   }
